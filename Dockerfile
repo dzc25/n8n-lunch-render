@@ -8,10 +8,6 @@ USER root
 RUN apk update && apk add --no-cache \
     chromium \
 
-# Définir les variables d'environnement pour Puppeteer
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
-
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
 
