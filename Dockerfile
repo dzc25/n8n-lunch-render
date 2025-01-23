@@ -1,9 +1,6 @@
 # Utiliser l'image officielle de n8n comme base
 FROM n8nio/n8n:latest
 
-# Installer les dépendances requises pour Puppeteer
-RUN apt-get install chromium-browser
-
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
 
