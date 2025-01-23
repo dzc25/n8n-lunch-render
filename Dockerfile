@@ -7,24 +7,6 @@ USER root
 # Installer Chromium et ses dépendances nécessaires pour Puppeteer
 RUN apk update && apk add --no-cache \
     chromium \
-    nss \
-    freetype \
-    harfbuzz \
-    ca-certificates \
-    ttf-freefont \
-    libx11 \
-    libxcomposite \
-    libxrandr \
-    libxdamage \
-    libatk \
-    libcups \
-    alsa-lib \
-    libxtst \
-    libpangocairo \
-    pango \
-    libcairo \
-    gdk-pixbuf \
-    glib
 
 # Définir les variables d'environnement pour Puppeteer
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
