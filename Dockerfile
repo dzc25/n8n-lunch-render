@@ -7,7 +7,7 @@ USER root
 # Mettre à jour l'index des paquets et installer bash
 RUN apk update && apk add --no-cache bash
 
-# Installer les dépendances requises pour Puppeteer
+# Installer les bibliothèques nécessaires pour Puppeteer
 RUN apk add --no-cache \
     libglib2.0 \
     nss \
