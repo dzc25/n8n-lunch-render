@@ -4,8 +4,11 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour installer les paquets nécessaires
 USER root
 
+# Mettre à jour l'index des paquets et installer bash
+RUN apk update && apk add --no-cache bash
+
 # Installer les dépendances requises pour Puppeteer
-RUN apk update && apk add --no-cache \
+RUN apk add --no-cache \
     libglib2.0 \
     nss \
     x11-libs \
@@ -32,3 +35,7 @@ RUN npm install cheerio@^1.0.0 \
 
 # Définir correctement le NODE_PATH pour inclure le dossier personnalisé
 ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
+
+# Revenir à l'utilisateur n8n pour la suite des opérations
+USER n8n
+
