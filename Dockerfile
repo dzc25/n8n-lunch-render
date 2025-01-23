@@ -9,6 +9,6 @@ RUN npm install cheerio@^1.0.0 \
     node-fetch@^2.7.0 \
     puppeteer@^23.10.1
 
-# Ajouter le répertoire au chemin NODE_PATH pour qu'il soit accessible globalement
-ENV NODE_PATH=/data/custom-libs/node_modules
+# Définir correctement le NODE_PATH pour inclure le dossier personnalisé
+ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
 
