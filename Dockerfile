@@ -5,8 +5,7 @@ FROM n8nio/n8n:latest
 USER root
 
 # Installer Chromium et ses dépendances nécessaires pour Puppeteer
-RUN apk update && apk add --no-cache \
-    chromium \
+RUN apk update && apk add --no-cache chromium
 
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
