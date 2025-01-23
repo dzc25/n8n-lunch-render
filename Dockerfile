@@ -1,6 +1,9 @@
 # Utiliser l'image officielle de n8n comme base
 FROM n8nio/n8n:latest
 
+# Passer à l'utilisateur root pour installer les paquets nécessaires
+USER root
+
 # Installer les dépendances requises pour Puppeteer
 RUN apk update && apk add --no-cache \
     libglib2.0 \
