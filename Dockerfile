@@ -17,7 +17,7 @@ RUN npm install cheerio@^1.0.0 \
 RUN apk update && \
     apk add --no-cache \
     nss \
-    atk \
+    atk1.0 \
     cairo \
     pango \
     gtk+3.0 \
