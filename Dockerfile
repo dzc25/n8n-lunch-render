@@ -1,6 +1,9 @@
 # Utiliser l'image officielle de n8n comme base
 FROM n8nio/n8n:latest
 
+# Passer à l'utilisateur root pour les installations système
+USER root
+
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
 
@@ -29,3 +32,6 @@ RUN apk update && \
 
 # Définir le NODE_PATH pour inclure les bibliothèques personnalisées
 ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
+
+# Revenir à l'utilisateur par défaut
+USER node
