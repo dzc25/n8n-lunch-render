@@ -5,10 +5,11 @@ FROM n8nio/n8n:latest
 USER root
 
 # Ajouter les dépôts communautaires
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/community" >> /etc/apk/repositories
 
 RUN apk update && \
     apk add --no-cache \
+    libgpg-error \
     chromium \
     libstdc++ \
     nss \
