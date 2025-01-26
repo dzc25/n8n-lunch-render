@@ -4,7 +4,11 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-
+# Mettre à jour les dépôts et installer une version plus ancienne de Chromium
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache chromium && \
+    chromium --version || echo "Erreur : Chromium non trouvé"
 
 
 # Créer un répertoire pour les bibliothèques
@@ -20,5 +24,3 @@ RUN npm install cheerio@^1.0.0 \
 # Définir le NODE_PATH pour inclure les bibliothèques personnalisées
 ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
 
-# Revenir à l'utilisateur n8n
-USER n8n
