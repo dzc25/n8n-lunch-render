@@ -4,10 +4,13 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
+# Ajouter les dépôts communautaires
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/community" >> /etc/apk/repositories
+
 # Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache chromium --repository=https://dl-cdn.alpinelinux.org/alpine/v3.21/main \
+    apk add --no-cache chromium --repository=https://dl-cdn.alpinelinux.org/alpine/v3.21/main && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
 
