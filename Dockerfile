@@ -1,40 +1,18 @@
 # Utiliser l'image officielle de n8n comme base
 FROM n8nio/n8n:latest
 
-# Passer à l'utilisateur root pour installer les dépendances
+# Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Installer les dépendances nécessaires pour Google Chrome
+# Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
-    apk add --no-cache \
-    wget \
-    libx11 \
-    libxcomposite \
-    libxrandr \
-    libxdamage \
-    libxcb \
-    libxi \
-    fontconfig \
-    freetype \
-    ttf-freefont \
-    libc6-compat \
-    udev \
-    nss \
-    alsa-lib \
-    binutils  # Ajouter binutils pour ar
+    apk upgrade && \
+    apk add --no-cache chromium && \
+    echo "Chromium installé avec succès" && \
+    chromium --version || echo "Erreur : Chromium non trouvé"
 
-# Télécharger et installer Google Chrome stable
-RUN mkdir -p /opt/google/chrome && \
-    wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    ar x /tmp/google-chrome-stable_current_amd64.deb && \
-    tar -xf data.tar.xz -C /opt/google/chrome && \
-    rm /tmp/google-chrome-stable_current_amd64.deb data.tar.xz control.tar.xz debian-binary && \
-    echo "Google Chrome stable installé avec succès"
 
-# Ajouter le chemin de Google Chrome au PATH
-ENV PATH="${PATH}:/opt/google/chrome/opt/google/chrome"
-
-# Créer un répertoire pour les bibliothèques personnalisées
+# Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
 
 # Installer les dépendances Node.js nécessaires
@@ -49,4 +27,3 @@ ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
 
 # Revenir à l'utilisateur n8n
 USER n8n
-
