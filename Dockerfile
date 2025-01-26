@@ -25,7 +25,7 @@ RUN apk update && \
 # Télécharger et installer Google Chrome stable
 RUN mkdir -p /opt/google/chrome && \
     wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    dpkg -x /tmp/google-chrome-stable_current_amd64.deb /opt/google/chrome && \
+    ar -x /tmp/google-chrome-stable_current_amd64.deb /opt/google/chrome && \
     rm /tmp/google-chrome-stable_current_amd64.deb && \
     echo "Google Chrome stable installé avec succès"
 
