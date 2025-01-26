@@ -6,13 +6,13 @@ USER root
 
 # Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
-    apk add --no-cache libgpg-error && \
-    apk upgrade && \
-    apk add --no-cache chromium --repository=https://dl-cdn.alpinelinux.org/alpine/v3.21/main && \
-    echo "Chromium installé avec succès" && \
-    chromium --version || echo "Erreur : Chromium non trouvé"
-
-
+    apk add --no-cache \
+    wget \
+    libx11 && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    dpkg -i google-chrome-stable_current_amd64.deb || apt --fix-broken install && \
+    echo "Google Chrome installé avec succès" && \
+    google-chrome-stable --version || echo "Erreur : Google Chrome non trouvé"
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
 
