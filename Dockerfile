@@ -20,7 +20,8 @@ RUN apk update && \
     libc6-compat \
     udev \
     nss \
-    alsa-lib
+    alsa-lib \
+    binutils  # Ajouter binutils pour ar
 
 # Télécharger et installer Google Chrome stable
 RUN mkdir -p /opt/google/chrome && \
