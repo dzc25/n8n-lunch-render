@@ -4,10 +4,15 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache chromium=132.0.6834.83-r0 --repository=http://dl-cdn.alpinelinux.org/alpine/v3.16/community && \
+    apk add --no-cache wget && \
+    wget https://alpine.pkgs.org/edge/alpine-main-x86_64/libgpg-error-dev-1.51-r0.apk -O /tmp/libgpg-error-dev.apk && \
+    apk add /tmp/libgpg-error-dev.apk && \
+    rm /tmp/libgpg-error-dev.apk
+
+# Installer Chromium
+RUN apk update && \
+    apk add --no-cache chromium && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
 
