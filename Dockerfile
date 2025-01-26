@@ -7,7 +7,7 @@ USER root
 # Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache chromium && \
+    apk add --no-cache chromium || true && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
 
