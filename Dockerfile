@@ -4,8 +4,30 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Installer Chromium et vérifier son installation
-RUN apk update && apk add --no-cache chromium && \
+# Installer les dépendances nécessaires et Chromium
+RUN apk update && \
+    apk add --no-cache \
+    chromium \
+    libgpg-error \
+    libstdc++ \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont \
+    libx11 \
+    libxcomposite \
+    libxrandr \
+    libxdamage \
+    libatk \
+    libcups \
+    alsa-lib \
+    libxtst \
+    libpangocairo \
+    pango \
+    libcairo \
+    gdk-pixbuf \
+    glib && \
     echo "Chromium installé avec succès" && \
     chromium-browser --version || echo "Erreur : Chromium non trouvé"
 
