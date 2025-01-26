@@ -4,10 +4,7 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Mettre à jour les dépôts et installer une version plus ancienne de Chromium
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache libgpg-error
+
 
 
 # Créer un répertoire pour les bibliothèques
