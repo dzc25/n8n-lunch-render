@@ -11,7 +11,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repo
 RUN apk update && \
     apk add --no-cache \
     chromium \
-    libgpg-error \
     libstdc++ \
     nss \
     freetype \
