@@ -7,26 +7,17 @@ USER root
 # Ajouter les dépôts communautaires
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories
 
-# Mettre à jour les dépôts et installer Chromium et ses dépendances
 RUN apk update && \
     apk add --no-cache \
     chromium \
     libstdc++ \
     nss \
-    freetype \
-    harfbuzz \
     ca-certificates \
     ttf-freefont \
     libx11 \
     libxcomposite \
-    libxrandr \
     libxdamage \
-    alsa-lib \
-    libxtst \
-    pango \
-    cairo \
-    gdk-pixbuf \
-    glib && \
+    alsa-lib && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
 
