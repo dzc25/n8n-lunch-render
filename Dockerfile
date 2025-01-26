@@ -4,8 +4,9 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Installer les dépendances nécessaires et Chromium
+# Installer Chromium et ses dépendances nécessaires
 RUN apk update && \
+    apk upgrade && \
     apk add --no-cache \
     chromium \
     libgpg-error \
@@ -29,7 +30,8 @@ RUN apk update && \
     gdk-pixbuf \
     glib && \
     echo "Chromium installé avec succès" && \
-    chromium-browser --version || echo "Erreur : Chromium non trouvé"
+    chromium --version || echo "Erreur : Chromium non trouvé"
+
 
 # Créer un répertoire pour les bibliothèques
 WORKDIR /data/custom-libs
