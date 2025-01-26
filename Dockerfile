@@ -22,11 +22,8 @@ RUN apk update && \
     libxcomposite \
     libxrandr \
     libxdamage \
-    atk \
-    libcups \
     alsa-lib \
     libxtst \
-    libpangocairo \
     pango \
     cairo \
     gdk-pixbuf \
