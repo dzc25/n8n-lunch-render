@@ -14,8 +14,8 @@ RUN apk update && \
     libxdamage \
     libxcb \
     libxi \
-    libfontconfig \
-    libxext \
+    fontconfig \
+    freetype \
     ttf-freefont \
     libc6-compat \
     udev \
@@ -47,3 +47,4 @@ ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
 
 # Revenir à l'utilisateur n8n
 USER n8n
+
