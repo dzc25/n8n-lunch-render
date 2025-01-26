@@ -4,9 +4,11 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Installer Chromium et ses dépendances nécessaires
+# Ajouter les dépôts communautaires
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.17/community" >> /etc/apk/repositories
+
+# Mettre à jour les dépôts et installer Chromium et ses dépendances
 RUN apk update && \
-    apk upgrade && \
     apk add --no-cache \
     chromium \
     libgpg-error \
@@ -20,13 +22,13 @@ RUN apk update && \
     libxcomposite \
     libxrandr \
     libxdamage \
-    libatk \
+    atk \
     libcups \
     alsa-lib \
     libxtst \
     libpangocairo \
     pango \
-    libcairo \
+    cairo \
     gdk-pixbuf \
     glib && \
     echo "Chromium installé avec succès" && \
