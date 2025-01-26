@@ -1,9 +1,6 @@
 # Utiliser l'image officielle de n8n comme base
 FROM n8nio/n8n:latest
 
-# Passer à l'utilisateur root pour pouvoir installer des paquets
-USER root
-
 # Installer Chromium et ses dépendances nécessaires pour Puppeteer
 RUN apk update && apk add --no-cache chromium
 
@@ -19,6 +16,3 @@ RUN npm install cheerio@^1.0.0 \
 
 # Définir le NODE_PATH pour inclure les bibliothèques personnalisées
 ENV NODE_PATH=/data/custom-libs/node_modules:$NODE_PATH
-
-# Revenir à l'utilisateur n8n
-USER n8n
