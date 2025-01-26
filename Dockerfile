@@ -8,6 +8,8 @@ USER root
 RUN apk update && \
     apk add --no-cache libgpg-error-dev && \
     apk upgrade && \
+    # Créer un lien symbolique pour pointer libgpg-error-dev vers libgpg-error
+    ln -s /usr/lib/libgpg-error-dev.so /usr/lib/libgpg-error.so && \
     apk add --no-cache chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.16/community && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
