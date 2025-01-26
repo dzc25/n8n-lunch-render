@@ -4,9 +4,6 @@ FROM n8nio/n8n:latest
 # Passer à l'utilisateur root pour pouvoir installer des paquets
 USER root
 
-# Ajouter les dépôts communautaires
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/community" >> /etc/apk/repositories
-
 # Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
     apk upgrade && \
