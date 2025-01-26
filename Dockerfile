@@ -9,7 +9,7 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.16/community" >> /etc/apk/repo
 
 # Mettre à jour les dépôts et installer une version plus ancienne de Chromium
 RUN apk update && \
-    apk add --no-cache chromium-132.0.6834.83-r0 && \
+    apk add --no-cache chromium && \
     echo "Chromium installé avec succès" && \
     chromium --version || echo "Erreur : Chromium non trouvé"
 
