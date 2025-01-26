@@ -25,8 +25,9 @@ RUN apk update && \
 # Télécharger et installer Google Chrome stable
 RUN mkdir -p /opt/google/chrome && \
     wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
-    ar -x /tmp/google-chrome-stable_current_amd64.deb /opt/google/chrome && \
-    rm /tmp/google-chrome-stable_current_amd64.deb && \
+    ar x /tmp/google-chrome-stable_current_amd64.deb && \
+    tar -xf data.tar.xz -C /opt/google/chrome && \
+    rm /tmp/google-chrome-stable_current_amd64.deb data.tar.xz control.tar.xz debian-binary && \
     echo "Google Chrome stable installé avec succès"
 
 # Ajouter le chemin de Google Chrome au PATH
