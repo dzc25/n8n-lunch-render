@@ -9,6 +9,10 @@ RUN apk update && \
     apk upgrade && \
     apk add --no-cache chromium && \
     chromium --version || echo "Erreur : Chromium non trouvé"
+    
+    
+# Copier l'extension captcha-solver dans le conteneur
+COPY ./Extensions/captcha-solver /data/custom-libs/captcha-solver
 
 
 # Créer un répertoire pour les bibliothèques
